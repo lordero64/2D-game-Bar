@@ -7,14 +7,14 @@ using UnityEngine.UIElements;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private float _Health;
+    [SerializeField] private float _health;
     [SerializeField] private float _speed;
     [SerializeField] Transform[] _points;
     [SerializeField] private SpriteRenderer _spriteRenderer;
 
     private int _index;
 
-    void Update()
+    private void Update()
     {
         transform.position = Vector2.MoveTowards(transform.position, _points[_index].position, _speed * Time.deltaTime);
 
@@ -30,11 +30,6 @@ public class Enemy : MonoBehaviour
                 _index = 1;
                 _spriteRenderer.flipX = true;
             }
-        }
-
-        if (_Health <= 0)
-        {
-            Destroy(gameObject);
         }
     }
 }

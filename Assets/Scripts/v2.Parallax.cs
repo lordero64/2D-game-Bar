@@ -11,7 +11,7 @@ public class ParallaxVersion2 : MonoBehaviour
 
     private Vector3 _targetPreviousPosition;
 
-    void Start()
+    private void Start()
     {
         if(!_followingTarget)
         {
@@ -21,7 +21,7 @@ public class ParallaxVersion2 : MonoBehaviour
         _targetPreviousPosition= _followingTarget.position;
     }
         
-    void Update()
+    private void Update()
     {
         var offset = _followingTarget.position - _targetPreviousPosition;
 

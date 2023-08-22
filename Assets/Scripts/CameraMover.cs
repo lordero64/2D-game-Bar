@@ -8,12 +8,12 @@ public class CameraMover : MonoBehaviour
 
     private Vector3 _offset;
 
-    void Start()
+    private void Start()
     {
         _offset= transform.position - _player.position;
     }
 
-    void Update()
+    private void Update()
     {
         transform.position = _player.position + _offset;
     }

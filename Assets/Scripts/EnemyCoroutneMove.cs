@@ -6,7 +6,7 @@ using static UnityEngine.GraphicsBuffer;
 
 [RequireComponent(typeof(SpriteRenderer))]
 
-public class EnemyCoroutine : MonoBehaviour
+public class EnemyCoroutineMove : MonoBehaviour
 {
     [SerializeField] private float _Health;
     [SerializeField] private float _speed;
@@ -15,7 +15,7 @@ public class EnemyCoroutine : MonoBehaviour
 
     private Coroutine _coroutine;
 
-    void Start()
+    private void Start()
     {
         if (_coroutine != null)
         {
@@ -34,11 +34,11 @@ public class EnemyCoroutine : MonoBehaviour
     {
         while (true)
         {
-            yield return MoveTo(_points[1].position);
-            _spriteRenderer.flipX = true;
-
-            yield return MoveTo(_points[0].position);
-            _spriteRenderer.flipX = false;
+            for (int i = 0; i < _points.Length; i++)
+            {
+                yield return StartCoroutine(MoveTo(_points[i].position));
+                _spriteRenderer.flipX = !_spriteRenderer.flipX;
+            }
         }
     }
 
