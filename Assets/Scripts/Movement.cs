@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Animator))]
 
 public class Movement : MonoBehaviour
 {
@@ -17,10 +18,10 @@ public class Movement : MonoBehaviour
     private bool _isLookingForward = true;
     private float _groundRadius = 0.2f;
     private float _moveInput;
+    private int _speedAimation = 2;
 
     private readonly int _speedHash = Animator.StringToHash("Speed");
     private readonly int _jumpHash = Animator.StringToHash("IsJumping");
-
 
     private void Start()
     {
@@ -46,7 +47,7 @@ public class Movement : MonoBehaviour
 
         if (_moveInput != 0)
         {
-            _animator.SetFloat(_speedHash, 2);
+            _animator.SetFloat(_speedHash, _speedAimation);
         }
         else
         {
